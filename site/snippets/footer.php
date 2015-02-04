@@ -6,10 +6,53 @@
 
 <?php
 
-echo '<section class="footer">';
+// main menu items
+$items = $pages->visible();
 
-    echo '<p class="micro ">copyright &copy; ' . date('Y') . ' ' . $site->title()->html() . '</p>';
 
-echo '</section>';
+echo '<div class="footer">';
+
+    echo '<div class="footer__left">';
+
+    // only show the menu if items are available
+    if($items->count()):
+
+    echo '<nav class="">';
+
+        echo '<ul class="list--inline milli">';
+
+            foreach($items as $item):
+
+            echo '<li><a href="' . $item->url() . '">' . $item->title()->html() . '</a></li>';
+
+            endforeach;
+
+        echo '</ul>';
+
+    echo '</nav>';
+
+    endif;
+
+    echo '</div>';
+
+    echo '<div class="footer__right">';
+
+        echo '<nav class="">';
+
+            echo '<ul class="list--inline milli">';
+
+                foreach($items as $item):
+
+                echo '<li><a href="' . $item->url() . '">' . $item->title()->html() . '</a></li>';
+
+                endforeach;
+
+            echo '</ul>';
+
+        echo '</nav>';
+
+    echo '</div>';
+
+echo '</div>';
 
 ?>

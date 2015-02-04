@@ -11,7 +11,6 @@
     left:0;
     width:auto;
     height:auto;
-    display:none;
     transition:all $base-timing $base-easing;
 }
 
@@ -24,5 +23,14 @@
 }
 
 .swiper__slide {
+    position:relative;
+}
 
+
+.slide__image {
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    top:$base-spacing-unit * 4;
+    bottom:$base-spacing-unit * 4;
 }

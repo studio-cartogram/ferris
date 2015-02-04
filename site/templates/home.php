@@ -6,22 +6,50 @@ snippet('svg-symbols');
 
 snippet('header');
 
+/**
+*   Sliders
+*/
 
-echo '<div class="wrap fill">';
+echo '<section
+    class="section--main "
+    lw-posts-slides
+    cg-fill-view-port
+    ng-controller="MainCtrl as main"
+    >';
 
-    echo '<div class="loader--view" ng-show="viewIsLoading"></div>';
 
-    echo '<section autoscroll  class="view-animate fill" ng-class="pagename" ng-view></section>';
+    /**
+    *   Text Slider
+    */
+    echo '<section
 
-echo '</div>';
+        class="js-swiper swiper-container swiper"
+        ng-class="main.posts[activePostIndex].parent"
+        >';
 
-snippet('main');
+        echo '<div class="swiper-wrapper swiper__wrapper">';
 
-snippet('single');
+            echo '<div class="swiper-slide swiper__slide" ng-repeat="post in main.posts" data-hash="{{post.uid}}">';
 
-snippet('about');
+                echo '<div ng-if="post.type===\'title\'" class="centered--vertical slide__intro">';
 
-snippet('feed');
+                    echo '<h1 ng-if="post.type===\'title\'" class="slide__title "><span ng-bind="post.title"></span></h1>';
+
+                echo '</div>';
+
+                echo '<div ng-if="post.type===\'image\'" class="fill slide__image" cg-background-image="{{post.url}}"></div>';
+
+            echo '</div>';
+
+        echo '</div>';
+
+    echo '</section>';
+
+    echo '<div class="swiper-scrollbar"></div>';
+
+echo '</section>';
+
+snippet('footer');
 
 snippet('foot');
 

@@ -4,11 +4,7 @@
     'use strict';
 
     angular.module('lw', [
-        'ngAnimate',
-        'ngCookies',
-        'ngTouch',
-        'ngSanitize',
-        'ngRoute',
+
         'cartogram.background',
         'cartogram.fill',
         'cartogram.dimensions',
@@ -21,41 +17,12 @@
         $rootScope.isLoaded = true;
         $rootScope.viewIsLoading = false;
 
-        //I contain the active post number in order to set the default
-        //slide on route change, default to 0;
-        $rootScope.activePostIndex = 0;
-
         FastClick.attach(document.body);
 
     })
 
-    .config(function ($routeProvider, $locationProvider) {
-        $routeProvider
-        .when('/', {
-            templateUrl: 'main.html',
-            controller: 'MainCtrl',
-            controllerAs: 'main',
-            pagename : 'main',
-            reloadOnSearch:false,
-            resolve : {
-                loadData: function(apiService, $rootScope, $log) {
-                    console.warn('step 2');
 
-                    return apiService.getPosts();
-                }
-            }
-        })
-
-        .otherwise({
-            redirectTo: '/'
-        })
-        ;
-
-    //    $locationProvider.hashPrefix('!');
-    })
-
-
-    .controller('MainCtrl', function ($log, $rootScope, $scope, loadData, $location) {
+    .controller('MainCtrl', function ($log, $rootScope, $scope, apiService) {
 
         var vm = this;
 
@@ -111,12 +78,39 @@
             $log.warn('step 3');
             $log.log('loadInitialData() loading data');
 
-            vm.posts = loadData.data;
-            vm.tags = loadData.tags;
-            vm.items = loadData.items;
+            apiService.getPosts().then(function(response) {
 
-            $rootScope.isLoading = false;
-            $rootScope.isLoaded = true;
+                $rootScope.$broadcast('dataIsLoaded');
+
+                angular.forEach(response.data, function(item) {
+
+                    var _first = {},
+                        imageCount = 0;
+                    _first.type = 'title';
+                    _first.title = item.title;
+                    _first.uid = item.uid;
+
+                    vm.posts.push(_first);
+
+
+                    angular.forEach(item.images, function(image) {
+                        var _second = {};
+                            imageCount++;
+
+                        _second.type = 'image';
+                        _second.url = image.url;
+                        _second.uid = item.uid+'-i-'+imageCount;
+                        vm.posts.push(_second);
+                    });
+                });
+
+                $rootScope.isLoading = false;
+                $rootScope.isLoaded = true;
+
+
+            });
+
+
         };
 
 
@@ -205,6 +199,13 @@
                     loop: true,
                     mousewheelControl : true,
                     keyboardControl : true,
+                    hashNav: true,
+                    scrollbar: {
+                        container : '.swiper-scrollbar',
+                        draggable : true,
+                        hide: true,
+                        snapOnRelease: true
+                    }
                 });
 
                 //Navigation
@@ -229,10 +230,11 @@
             // ---
 
 
-            $timeout(function() {
-                init();
-            }, 0);
-
+            scope.$on('dataIsLoaded', function() {
+                $timeout(function() {
+                    init();
+                }, 0);
+            });
         };
     })
 
