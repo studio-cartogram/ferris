@@ -1,0 +1,24 @@
+Title: Ferris
+----
+
+Description: This is Kirby's Starterkit.
+
+----
+
+Keywords: Design, Toronto
+
+----
+
+twitter:
+
+----
+
+fontStack: 'Montserrat',  'Inconsolata'
+
+----
+
+Copyright: © 2009-(date: Year) (link: http://getkirby.com text: Kirby)
+
+----
+
+About: Ferris is...
