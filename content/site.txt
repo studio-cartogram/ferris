@@ -9,7 +9,8 @@ Keywords: Design, Toronto
 
 ----
 
-twitter:
+Social: 'Twitter',  'www.twitter.com'
+
 
 ----
 

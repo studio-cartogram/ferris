@@ -16,12 +16,6 @@ The book’s design takes its cue from Etrog’s primary medium—sculpture—wi
 
 2013 Uvu Design and Print Excellence Award
 
-(image: Etrog-02.jpg )
+----
 
-(image: Etrog-03.jpg )
-
-(image: Etrog-04.jpg )
-
-(image: Etrog-05.jpg )
-
-(image: Etrog-06.jpg )
+Color: brown

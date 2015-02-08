@@ -3,12 +3,13 @@
 (function() {
     'use strict';
 
-    angular.module('lw', [
-
+    angular.module('frrs', [
+        'ngSanitize',
         'cartogram.background',
         'cartogram.fill',
         'cartogram.dimensions',
         'cartogram.scroll',
+
         // 'foundation'
     ])
 
@@ -84,23 +85,33 @@
 
                 angular.forEach(response.data, function(item) {
 
-                    var _first = {},
+                    var _title = {},
+                        _text = {},
                         imageCount = 0;
-                    _first.type = 'title';
-                    _first.title = item.title;
-                    _first.uid = item.uid;
 
-                    vm.posts.push(_first);
+                    _title.type = 'title';
+                    _title.title = item.title;
+                    _title.uid = item.uid;
+                    _title.color = item.color;
 
+                    vm.posts.push(_title);
+
+
+                    _text.type = 'text';
+                    _text.text = item.text;
+                    _text.uid = item.uid+'-intro';
+                    _text.color = item.color;
+                    vm.posts.push(_text);
 
                     angular.forEach(item.images, function(image) {
-                        var _second = {};
+                        var _image = {};
                             imageCount++;
-
-                        _second.type = 'image';
-                        _second.url = image.url;
-                        _second.uid = item.uid+'-i-'+imageCount;
-                        vm.posts.push(_second);
+                        _image.color = item.color;
+                        _image.type = 'image';
+                        _image.url = image.url;
+                        _image.caption = image.name;
+                        _image.uid = item.uid+'-i-'+imageCount;
+                        vm.posts.push(_image);
                     });
                 });
 
@@ -200,11 +211,21 @@
                     mousewheelControl : true,
                     keyboardControl : true,
                     hashNav: true,
+                    autoplay: 5000,
+                    autoplayDisableOnInteraction: true,
                     scrollbar: {
                         container : '.swiper-scrollbar',
                         draggable : true,
-                        hide: true,
+                        hide: false,
                         snapOnRelease: true
+                    },
+                    onSlideChangeStart : function(swiper) {
+                        console.log(swiper.activeIndex);
+                        console.log($(swiper.activeSlide()).data('color'));
+
+                        scope.$apply(function() {
+                            scope.color = $(swiper.activeSlide()).data('color');
+                        })
                     }
                 });
 

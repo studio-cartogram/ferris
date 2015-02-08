@@ -42,7 +42,7 @@ snippet('fonts');
 
 echo '</head>';
 
-echo '<body ng-app="lw" class="template--{{pagename}} state--{{state}}" ng-class="{
+echo '<body ng-app="frrs" class="template--{{pagename}} state--{{state}}" ng-class="{
     \'is-ready\' : isReady ,
     \'is-loading\' : isLoading,
     \'is-loaded\' : isLoaded

@@ -34,3 +34,35 @@
     top:$base-spacing-unit * 4;
     bottom:$base-spacing-unit * 4;
 }
+
+.slide__intro {
+
+}
+
+
+
+//Navigation
+
+
+.swiper__nav--left,
+.swiper__nav--right {
+    height:auto;
+    width:auto;
+    position:absolute;
+    top:25%;
+    bottom:25%;
+    z-index:index($elements, sliderNav)
+}
+
+.swiper__nav--right {
+    right:0;
+    left:50%;
+    cursor: e-resize
+}
+
+
+.swiper__nav--left {
+    right:50%;
+    cursor: w-resize;
+    left:0%;
+}

@@ -14,8 +14,6 @@ Text: Creating this publication was a rewarding exercise in managing a tight bud
 
 Accompanying an exhibition through the Royal Ontario Museum’s Department of World Cultures, a non-traditional approach to the publication’s layout bridges the concept of what a book of photography can be; not a catalogue but not a photo album, either. Starting with photos of Montague’s family, the book progresses through a series of essays juxtaposed with works by multiple artists, creating a sense of moving back and forth through history. To reinforce that idea, the selected type treatment references vintage photo albums while maintaining a current flourish.
 
-(image: 1.jpg caption: Lorem ipsum caption)
+----
 
-(image: 2.jpg )
-
-(image: 3.jpg caption: Another caption)
+Color: blue

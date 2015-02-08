@@ -1,0 +1,39 @@
+.section--timeline {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:$base-spacing-unit * 2;
+    width:auto;
+    display: flex;
+
+}
+
+.timeline__item {
+    position:relative;
+    flex-grow:1;
+    line-height:$base-spacing-unit/2;
+    height:$base-spacing-unit/2;
+    display:none;
+}
+
+.timeline__title {
+    border-left:1px solid black;
+    font-size:$nano;
+    text-overflow: ellipsis;
+    line-height:$base-spacing-unit/3;
+    height:$base-spacing-unit/3;
+    /* Required for text-overflow to do anything */
+    white-space: nowrap;
+    // overflow: hidden;
+    position:absolute;
+    color:transparent;
+
+}
+
+.timeline__image {
+    line-height:$base-spacing-unit/4;
+    height:$base-spacing-unit/4;
+    border-left:1px solid;
+    opacity:0.5;
+}

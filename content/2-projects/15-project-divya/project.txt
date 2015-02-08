@@ -16,14 +16,6 @@ Text: The annual RBC Painting Competition is among Canada’s top arts prizes. E
 
 Energetic brushstrokes on the catalogue cover, applied in gradients of the client’s signature blue, reference the physical act of painting while suggesting the emerging talents presented in the book. A strict grid and minimal type results in reduced noise on the cover and on each page, helping the works of art to stand out.
 
-(image: Mehra-02.jpg caption: Lorem ipsum caption)
+----
 
-(image: Mehra-03.jpg )
-
-(image: Mehra-04.jpg )
-
-(image: Mehra-05.jpg )
-
-(image: Mehra-06.jpg )
-
-(image: Mehra-07.jpg )
+Color: brown

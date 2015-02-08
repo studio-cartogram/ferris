@@ -13,17 +13,21 @@
  * Released on: June 27, 2014
 */
 .swiper-scrollbar {
-    border-radius: 10px;
-    position: relative;
+    left:0;
+    right:0;
+    top:0;
+    position: absolute;
     -ms-touch-action: none;
-    background: rgba(0,0,0,0.1)
+    height:$base-spacing-unit/2;
+    background:rgba(black, 0);
+    z-index:index($elements, scrollBar);
+    cursor:pointer;
 }
 .swiper-scrollbar-drag {
     height: 100%;
     width: 100%;
     position: relative;
-    background: rgba(0,0,0,0.5);
-    border-radius: 10px;
+    border-top:1px solid;
 }
 .swiper-scrollbar-cursor-drag {
     cursor: move;

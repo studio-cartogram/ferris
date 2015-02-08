@@ -30,4 +30,14 @@ angular.module('cartogram.background', [
             });
         });
     };
+})
+
+.directive('cgBackgroundColor', function(){
+    return function(scope, element, attrs){
+        attrs.$observe('cgBackgroundColor', function(value) {
+            element.css({
+                'background-color': value
+            });
+        });
+    };
 });
