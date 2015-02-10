@@ -10,11 +10,11 @@ snippet('svg-symbols');
 *   Sliders
 */
 
-
+snippet('header');
 
 echo '<section
     class="section--main "
-    lw-posts-slides
+    kt-posts-slides
     cg-fill-view-port
     ng-controller="MainCtrl as main"
     style="background-color:{{color}}"
@@ -38,13 +38,13 @@ echo '<section
 
         echo '<div class="swiper-wrapper swiper__wrapper">';
 
-            echo '<div class="swiper-slide swiper__slide" >';
+            echo '<div class="swiper-slide swiper__slide" data-hash="start" >';
 
-                echo '<div  class="centered--vertical slide__intro">';
+                echo '<div  class="centered--vertical slide__intro"  >';
 
                     echo '<h1 class="slide__title ">';
 
-                        echo '<span class="">'  . $site->title()->html() . '</span>';
+                        echo '<span class="giga">'  . $site->title()->html() . '</span>';
 
                     echo '</h1>';
 
@@ -52,13 +52,13 @@ echo '<section
 
             echo '</div>';
 
-            echo '<div class="swiper-slide swiper__slide" >';
+            echo '<div class="swiper-slide swiper__slide" data-hash="about"  >';
 
                 echo '<div  class="centered--vertical slide__intro">';
 
                     echo '<div class="slide__text formatted">';
 
-                        echo '<span class="">'  . $site->about()->html() . '</span>';
+                        echo '<span class="">'  . $site->about()->kirbytext() . '</span>';
 
                     echo '</div>';
 
@@ -70,13 +70,13 @@ echo '<section
 
                 echo '<div ng-if="post.type===\'text\'" class="centered--vertical slide__intro">';
 
-                    echo '<div ng-if="post.type===\'text\'" class="slide__text formatted "><span ng-bind-html="post.text"></span></div>';
+                    echo '<div ng-if="post.type===\'text\'" class="slide__text soft formatted "><span ng-bind-html="post.text"></span></div>';
 
                 echo '</div>';
 
                 echo '<div ng-if="post.type===\'title\'" class="centered--vertical slide__intro">';
 
-                    echo '<h1 ng-if="post.type===\'title\'" class="slide__title "><span ng-bind="post.title"></span></h1>';
+                    echo '<h3 ng-if="post.type===\'title\'" class="slide__title soft "><span class="heading" ng-bind="post.title"></span></h3>';
 
                 echo '</div>';
 
@@ -98,19 +98,23 @@ echo '<section
 
         echo '<a class="swiper__nav--left js-swiper__prev">';
 
+            echo '<i class="icon icon--beta"><svg viewBox="0 0 64 64"><use xlink:href="#arrow-left"></svg></i>';
+
         echo '</a>';
 
         echo '<a class="swiper__nav--right js-swiper__next">';
+
+            echo '<i class="icon icon--beta"><svg viewBox="0 0 64 64"><use xlink:href="#arrow-right"></svg></i>';
 
         echo '</a>';
 
     echo '</div>';
 
+
+    snippet('footer');
+
 echo '</section>';
 
-//snippet('footer');
-
 snippet('foot');
-
 
 ?>

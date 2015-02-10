@@ -1,7 +1,5 @@
 .page {
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+    padding:$base-spacing-unit * 5 $base-spacing-unit *2 $base-spacing-unit * 5;
+    text-align:left;
+    max-width:rem-calc(700px);
 }

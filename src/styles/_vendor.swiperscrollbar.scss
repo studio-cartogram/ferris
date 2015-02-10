@@ -15,19 +15,27 @@
 .swiper-scrollbar {
     left:0;
     right:0;
-    top:0;
-    position: absolute;
+    bottom:0;
+    position: fixed;
     -ms-touch-action: none;
-    height:$base-spacing-unit/2;
-    background:rgba(black, 0);
+    height:$base-spacing-unit/4;
+    background:rgba(black, 1);
     z-index:index($elements, scrollBar);
     cursor:pointer;
+    transform:translate3d(0, 100%, 0);
+    transition:all $base-timing $base-easing;
+    &:hover {
+        height:$base-spacing-unit/2;
+    }
+    .not-on-intro & {
+        transform:translate3d(0, 0%, 0);
+    }
 }
 .swiper-scrollbar-drag {
     height: 100%;
     width: 100%;
     position: relative;
-    border-top:1px solid;
+    background:$white;
 }
 .swiper-scrollbar-cursor-drag {
     cursor: move;

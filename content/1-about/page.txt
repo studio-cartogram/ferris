@@ -1,0 +1,59 @@
+Title: About
+
+----
+
+Text:
+# Headline 1
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+
+## Headline 2
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+
+### Headline 3
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+
+#### Headline 4
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+
+_The quick brown fox jumps over the lazy dog_
+
+**The quick brown fox jumps over the lazy dog**
+
+The Simpsons:
+
+- Homer
+- Marge
+- Bart
+- Lisa
+- Maggie
+
+The Simpsons:
+
+1. Homer
+2. Marge
+3. Bart
+4. Lisa
+5. Maggie
+
+Wayfarers vinyl you probably haven't heard of them 3 wolf moon, craft beer messenger bag dreamcatcher hashtag yr meh jean shorts DIY Marfa. Fingerstache master cleanse chillwave meditation sustainable. Schlitz tofu Williamsburg, Bushwick kitsch ennui freegan messenger bag retro Intelligentsia chambray scenester PBR&B. Literally tote bag banjo Portland four loko quinoa. Cornhole pop-up selvage, Banksy bicycle rights stumptown farm-to-table yr Wes Anderson crucifix direct trade Bushwick artisan. Crucifix post-ironic slow-carb, beard Vice bespoke banh mi American Apparel street art readymade salvia pour-over retro. Ethical 8-bit heirloom, migas dreamcatcher YOLO cred bicycle rights seitan disrupt.
+
+****
+
+Intelligentsia ennui single-origin coffee, freegan direct trade yr pork belly selfies whatever gastropub sartorial. Fixie gastropub street art actually meh. Shoreditch forage McSweeney's, Godard art party butcher messenger bag kogi pour-over freegan pop-up aesthetic narwhal Neutra cred. Ugh fanny pack occupy, polaroid Portland twee listicle jean shorts health goth chambray pop-up PBR wayfarers gluten-free farm-to-table. Drinking vinegar normcore lo-fi, 90's fashion axe heirloom meh Vice banh mi hoodie next level fanny pack cred. Four dollar toast butcher artisan lo-fi, fingerstache hashtag fanny pack Tumblr meggings Shoreditch Blue Bottle put a bird on it hella. 90's organic artisan Shoreditch.
+
+> Design is not just what it looks like and feels like.
+> Design is how it works.
+
+– Steve Jobs
+
+```
+<?php
+
+// awesome code example
+
+?>
+```
+
+(link: docs/getting-started) Synth keytar Carles, freegan lomo ugh Intelligentsia forage mustache. (link: blog/text-formatting-101) Austin shabby chic asymmetrical master cleanse actually, blog authentic slow-carb selvage health goth pork belly. Echo Park 90's Vice, pug try-hard Carles you probably haven't heard of them put a bird on it Marfa flexitarian street art Godard Pitchfork fanny pack. Artisan fap Pitchfork, viral Portland swag try-hard Bushwick ethical PBR biodiesel lo-fi wolf sartorial before they sold out. Actually +1 try-hard Etsy synth before they sold out. Distillery forage four loko, freegan cray drinking vinegar wolf. Banksy pop-up selvage twee actually.
+
+Paleo pop-up +1 ennui, locavore single-origin coffee deep v farm-to-table small batch. Pork belly fingerstache Intelligentsia, salvia letterpress brunch sustainable you probably haven't heard of them tousled master cleanse. Fanny pack artisan occupy PBR, pickled ethical tousled taxidermy flexitarian food truck DIY wayfarers McSweeney's. Williamsburg Tumblr wayfarers tilde. Seitan chambray raw denim, DIY meggings YOLO food truck iPhone before they sold out trust fund. Occupy VHS McSweeney's selvage pour-over, meditation Vice 3 wolf moon you probably haven't heard of them XOXO try-hard. Lo-fi occupy YOLO Austin flannel gentrify.

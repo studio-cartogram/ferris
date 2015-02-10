@@ -10,10 +10,14 @@ var $ = require('gulp-load-plugins')({
 
 
 gulp.task('deploy', function () {
-    return gulp.src(['content/*/**'])
+    return gulp.src([
+        '/*/**',
+        '!bower_components',
+        '!node_modules'
+        ])
         .pipe($.ftp({
             host: 's112896.gridserver.com',
-            remotePath: '/domains/kirbythemes.com/html',
+            remotePath: '/domains/demos.kirbythemes.com/html',
             user: 's112896.gridserver.com',
             pass: 'C@RTmin01'
         }))

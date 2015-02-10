@@ -45,7 +45,7 @@
         li {
             display:inline-block;
             position:relative;
-            margin:0 $base-spacing-unit/2 $base-spacing-unit/4;
+            margin:0 $base-spacing-unit/2 0;
 
             &.is-disabled a {
                 opacity:0;

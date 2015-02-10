@@ -98,10 +98,17 @@ sizes, pagination, etc.
 
     /*width: 100%;
     height: 100%;*/
+    figcaption {
+        opacity:0;
+        transition:all $base-timing $base-easing $base-timing;
+    }
 }
 .swiper-slide-active {
     /* Specific active slide styling: */
-
+    figcaption {
+        transition:all $base-timing $base-easing 0;
+        opacity:1
+    }
 }
 .swiper-slide-visible {
     /* Specific visible slide styling: */

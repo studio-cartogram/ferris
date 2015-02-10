@@ -32,55 +32,195 @@
     */
 
 
+    .loader {
+        display: block;
+        clear: both;
+        position: absolute;
+        top: 1px;
+        left: 50%;
+        width:100%;
+        transform: translate3d(-50%, 0, 0);
+        transition:transform $base-timing $base-easing;
+        .is-ready.is-loaded & {
+            transform: translate3d(-50%, 100%, 0);
+        }
+        height:$base-spacing-unit * 3;
+        line-height:$base-spacing-unit * 3;
+        span {
+            display:block;
+            height:$base-spacing-unit * 3;
+            line-height:$base-spacing-unit * 3;
+        }
+    }
 
     /*
-    *   State has not bootstrapped
+    *   Outer Layer
     */
-    .header {
+
+    .ends {
         position:fixed;
-        top:0;
         left:0;
         right:0;
-        height:$base-spacing-unit * 2;
-        line-height:$base-spacing-unit * 2;
-        z-index: index($elements, header);
+        transition:transform $base-timing $base-easing;
+        transform:translateY(0%);
+        height:$base-spacing-unit * 3;
+        line-height:$base-spacing-unit * 3;
         overflow:hidden;
-    }
+        @include breakpoint(medium) {
 
-    .loader {
-        display:block;
-        clear:both;
-        transition:transform $base-timing $base-easing;
-        transform:translate3d(0, -100%, 0);
+        }
     }
-
-    .header__logo {
-        width:100%;
-        transition:transform $base-timing $base-easing;
-        transform:translate3d(0, -100%, 0);
-        display:block;
-    }
+        .header {
+            top:0;
+            z-index: index($elements, header);
+        }
 
 
     /*
-    *   State is bootstrapped and is loading
+    *   Inner Offcanvas Layer
     */
-    .is-loading.is-ready {
-        .header {
 
+    .ends__offcanvas {
+        position:absolute;
+        left:0;
+        right:0;
+        height:$base-spacing-unit * 3;
+        line-height:$base-spacing-unit * 3;
+        transform:translateY(0%);
+        width:auto;
+        overflow:hidden;
+        transition-property: width;
+        transition-duration: 0s;
+        transition-delay: $base-timing;
+    }
+
+
+        .header__offcanvans {
+            top:0;
+            z-index:index($elements, header);
         }
 
+
+    .ends__left {
+        width:auto;
+        right:50%;
+        left:0;
+        top:0;
+        padding-left:$base-spacing-unit * 2;
+        position:absolute;
+        transition:all $base-timing $base-easing;
+        text-align:left;
+        height:$base-spacing-unit * 3;
+        line-height:$base-spacing-unit * 3;
+        // z-index:1000;
     }
+
+        .ends__left--header {
+            transform:translate3d(0, -100%, 0);
+        }
+
 
     /*
     *   State is bootstrapped and is loading
     */
     .is-loaded.is-ready {
-        .header__logo {
-            transform:translate3d(0, 0%, 0);
-        }
+    //    &.not-on-intro {
+            .ends__left {
+                transform:translate3d(0, -0%, 0);
+            }
 
-        .loader {
-            transform:translate3d(0, 0%, 0);
+            .ends__right {
+                transform:translate3d(0, -0%, 0);
+            }
+    //    }
+    }
+
+
+    .ends__right {
+        position:absolute;
+        transition:transform $base-timing $base-easing;
+        width:$base-spacing-unit * 4;
+        height:$base-spacing-unit * 3;
+        line-height:$base-spacing-unit * 3;
+        display:block;
+        text-align:center;
+        right:0;
+        &:hover {
+            color:$color-anchor-hover;
+        }
+        .icon {
+            position:absolute;
+            top:50%;
+            transform:translate(-90%,-40%);
+
         }
     }
+
+    .ends__right--header {
+        top:0;
+        transform:translate3d(0, -100%, 0);
+    }
+
+    .ends__nav {
+        height:100vh;
+        position:fixed;
+        width:auto;
+        transform:translateY(-100%);
+        transition-property: transform;
+        transition-duration: $base-timing;
+        text-align:right;
+        right:$base-spacing-unit;
+        left:0;
+        // @include breakpoint(medium) {
+            height:$base-spacing-unit * 4;
+        // }
+
+    }
+
+        .ends__nav--header {
+            transform:translateY(-100%);
+        }
+
+
+    .ends__nav__inner  {
+        width:100%;
+        display:block;
+        transition:opacity $base-timing $base-timing $base-easing;
+    }
+
+    //.not-on-intro {
+        .ends__offcanvas:hover  {
+            width:100%;
+            transition-property: width;
+            transition-duration: 0s;
+            transition-delay: 0s;
+            .ends__nav {
+                transform:translateY(0%);
+                transition:transform $base-timing $base-easing;
+            }
+            .ends__nav__inner {
+                opacity:1;
+                transition:opacity $base-timing $base-easing;
+            }
+            .ends__right--header {
+                transform:translate3d(0, 100%, 0);
+            }
+
+        }
+//    }
+
+// .nav--global {
+//     padding-top:$base-spacing-unit * 4;
+//     li {
+//         line-height:2;
+//         display:block;
+//
+//     }
+//     @include breakpoint(medium) {
+//         padding-top:0;
+//         line-height:$base-spacing-unit * 3;
+//         li {
+//             display:inline-block;
+//         }
+//     }
+// }

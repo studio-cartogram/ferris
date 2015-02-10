@@ -22,4 +22,6 @@ Copyright: © 2009-(date: Year) (link: http://getkirby.com text: Kirby)
 
 ----
 
-About: Ferris is...
+About: Deliberately minimal. Deceptively powerful.
+Ferris is the first premium theme
+for the Kirby CMS.

@@ -3,7 +3,7 @@
 (function() {
     'use strict';
 
-    angular.module('frrs', [
+    angular.module('kt', [
         'ngSanitize',
         'cartogram.background',
         'cartogram.fill',
@@ -16,8 +16,7 @@
     .run(function($log, $rootScope) {
         $rootScope.isReady = true;
         $rootScope.isLoaded = true;
-        $rootScope.viewIsLoading = false;
-
+        $rootScope.onIntro = true;
         FastClick.attach(document.body);
 
     })
@@ -35,44 +34,6 @@
 
         loadInitialData();
 
-        // ---
-        // PRIVATE METHODS.
-        // ---
-
-        //route change methods.
-        $rootScope.$on("$routeChangeStart", function (event, current, previous, rejection) {
-
-            $rootScope.viewIsLoading = true;
-            $log.warn(previous.pagename, current.pagename, 'step 1');
-            $rootScope.isLoaded = false;
-
-
-            if(!!previous && previous.pagename === "main" && !!current && current.pagename === "single") {
-                    $rootScope.state = 'transition-to-single';
-                    $log.info('transition to single');
-            }
-
-        });
-
-        $rootScope.$on("$routeChangeSuccess", function (event, current, previous, rejection) {
-            //$log.log('route change end');
-            $rootScope.pagename = current.pagename;
-            //debugger;
-
-            $rootScope.viewIsLoading = false;
-
-            if(!!current && current.pagename === "main") {
-                $log.log('we are moving toward the main page');
-            }
-
-            if(!!previous && previous.pagename === "main" && !!current && current.pagename === "single") {
-                $rootScope.state = 'transition-on-single';
-                $log.info('transition on single');
-            }
-
-            $log.warn(previous.pagename, current.pagename, 'step 5');
-
-        });
         $log.warn('step 4');
         // I load the remote data from the server.
         function loadInitialData(slug) {
@@ -82,8 +43,9 @@
             apiService.getPosts().then(function(response) {
 
                 $rootScope.$broadcast('dataIsLoaded');
-
+                var count=0;
                 angular.forEach(response.data, function(item) {
+                    count++;
 
                     var _title = {},
                         _text = {},
@@ -93,6 +55,7 @@
                     _title.title = item.title;
                     _title.uid = item.uid;
                     _title.color = item.color;
+                    _title.index = count;
 
                     vm.posts.push(_title);
 
@@ -101,9 +64,12 @@
                     _text.text = item.text;
                     _text.uid = item.uid+'-intro';
                     _text.color = item.color;
+                    _text.index = count;
                     vm.posts.push(_text);
 
                     angular.forEach(item.images, function(image) {
+                        count++;
+
                         var _image = {};
                             imageCount++;
                         _image.color = item.color;
@@ -111,6 +77,7 @@
                         _image.url = image.url;
                         _image.caption = image.name;
                         _image.uid = item.uid+'-i-'+imageCount;
+                        _image.index = count;
                         vm.posts.push(_image);
                     });
                 });
@@ -197,7 +164,7 @@
         }
     )
 
-    .directive('lwPostsSlides', function($window, $log, $timeout, $rootScope){
+    .directive('ktPostsSlides', function($window, $log, $timeout, $rootScope){
 
         return function(scope, $elm, attrs){
 
@@ -219,13 +186,15 @@
                         hide: false,
                         snapOnRelease: true
                     },
-                    onSlideChangeStart : function(swiper) {
-                        console.log(swiper.activeIndex);
-                        console.log($(swiper.activeSlide()).data('color'));
+                    onSlideChangeEnd : function(swiper) {
 
-                        scope.$apply(function() {
-                            scope.color = $(swiper.activeSlide()).data('color');
+                    },
+                    onSlideChangeStart : function(swiper) {
+
+                        $rootScope.$apply(function() {
+                            scope.color = $(swiper.activeSlide()).data('color') || 'white';
                         })
+
                     }
                 });
 
@@ -238,6 +207,11 @@
                     e.preventDefault()
                     swiper.swipeNext()
                 });
+
+                scope.skipToSlide = function(index) {
+                    swiper.swipeTo(index);
+                    console.log(index);
+                }
             }
 
 
@@ -256,34 +230,6 @@
                     init();
                 }, 0);
             });
-        };
-    })
-
-
-
-    .directive('lwInput', function($log){
-        return function(scope, $elm, attrs){
-            if( $elm[0].value.trim() !== '' ) {
-                $elm.addClass('input--filled' );
-            }
-
-            // events:
-            $elm.on( 'focus', onInputFocus );
-            $elm.on( 'blur', onInputBlur );
-
-            function onInputFocus( ev ) {
-                $elm.addClass('input--filled' );
-                $log.log('focus');
-            }
-
-            function onInputBlur( ev ) {
-                $log.log('blur');
-                if( ev.target.value.trim() === '' ) {
-                    $elm.removeClass('input--filled' );
-                }
-            }
-
-
         };
     })
 
