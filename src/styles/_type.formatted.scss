@@ -1,14 +1,55 @@
+$site-text-wrap-width : rem-calc(650px) !default;
+
 /*
 Text coming in from CMS
 */
 .formatted {
+    text-align:left;
+    padding:$base-spacing-unit * 6 $base-spacing-unit * 2  ;
+    max-width:$site-text-wrap-width;
     p,
     h1,
     h2,
     h3,
-    h4 {
+    h4,
+    h5,
+    h6,
+    ul,
+    ol {
         max-width:rem-calc(500px);
-        margin-left:auto;
-        margin-right:auto;
+        margin-left:0;
+        margin-right:0;
+        margin-bottom:$base-spacing-unit;
+    }
+    ul {
+        @extend .list--bulleted;
+    }
+    ol {
+        @extend .list--numbered;
+    }
+}
+
+.list--bulleted {
+    li {
+        position:relative;
+        padding-left:$base-spacing-unit;
+        &:before {
+            content:' ';
+            top:$base-spacing-unit/2;
+            width:$base-spacing-unit - rem-calc(2);
+            height:rem-calc(2);
+            left:0;
+            background:$color-text;
+            position:absolute;
+        }
+    }
+}
+.list--numbered {
+
+
+    li {
+        position:relative;
+        list-style:decimal-leading-zero;
+        list-style-position: inside
     }
 }

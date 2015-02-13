@@ -39,7 +39,7 @@ c::set('routes', array(
             $page = site()->children();
             $data = $page->children()->visible()->flip()->paginate($per_page);
 
-            $count = 0;
+            $count = 2;
             $json = array();
             $posts = array();
 
@@ -58,6 +58,7 @@ c::set('routes', array(
 
             foreach($posts as $post) {
 
+                $count = $count+2;
 
                 $images = array();
 
@@ -68,6 +69,7 @@ c::set('routes', array(
                         'height' => $image->height(),
                         'name'   => str_replace(' ', '_', $image->name())
                     );
+                    $count++;
                 }
 
 

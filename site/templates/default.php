@@ -13,19 +13,11 @@ snippet('svg-symbols');
 snippet('header');
 
 echo '<section
-    class="section--main "
+    class="section--main js-push-section"
     kt-posts-slides
-    cg-fill-view-port
     ng-controller="MainCtrl as main"
     style="background-color:{{color}}"
     >';
-
-    echo '<section class="section--timeline">';
-        echo '<div class="timeline__item" ng-repeat="post in main.posts">';
-            echo '<span ng-if="post.type===\'title\'" class="timeline__title make-block" >{{post.title}}</span>';
-            echo '<span ng-if="post.type===\'image\'" class="timeline__image make-block"></span>';
-        echo '</div>';
-    echo '</section>';
 
     /**
     *   Text Slider
@@ -56,9 +48,9 @@ echo '<section
 
                 echo '<div  class="centered--vertical slide__intro">';
 
-                    echo '<div class="slide__text formatted">';
+                    echo '<div class="slide__text ">';
 
-                        echo '<span class="">'  . $site->about()->kirbytext() . '</span>';
+                        echo '<span>'  . $site->about()->kirbytext() . '</span>';
 
                     echo '</div>';
 
@@ -70,7 +62,7 @@ echo '<section
 
                 echo '<div ng-if="post.type===\'text\'" class="centered--vertical slide__intro">';
 
-                    echo '<div ng-if="post.type===\'text\'" class="slide__text soft formatted "><span ng-bind-html="post.text"></span></div>';
+                    echo '<div ng-if="post.type===\'text\'" class="slide__text   "><span ng-bind-html="post.text"></span></div>';
 
                 echo '</div>';
 
@@ -96,13 +88,13 @@ echo '<section
 
     echo '<div class="swiper__nav fill">';
 
-        echo '<a class="swiper__nav--left js-swiper__prev">';
+        echo '<a class="swiper__nav--left swiper-button-prev">';
 
             echo '<i class="icon icon--beta"><svg viewBox="0 0 64 64"><use xlink:href="#arrow-left"></svg></i>';
 
         echo '</a>';
 
-        echo '<a class="swiper__nav--right js-swiper__next">';
+        echo '<a class="swiper__nav--right swiper-button-next">';
 
             echo '<i class="icon icon--beta"><svg viewBox="0 0 64 64"><use xlink:href="#arrow-right"></svg></i>';
 
@@ -110,10 +102,9 @@ echo '<section
 
     echo '</div>';
 
-
-    snippet('footer');
-
 echo '</section>';
+
+snippet('footer');
 
 snippet('foot');
 

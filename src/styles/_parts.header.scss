@@ -34,23 +34,19 @@
 
     .loader {
         display: block;
-        clear: both;
         position: absolute;
-        top: 1px;
-        left: 50%;
-        width:100%;
-        transform: translate3d(-50%, 0, 0);
+        left:0;
+        right:0;
+        width:auto;
+        height:$base-spacing-unit * 3;
+        line-height:$base-spacing-unit * 3;
+        text-align:center;
         transition:transform $base-timing $base-easing;
         .is-ready.is-loaded & {
             transform: translate3d(-50%, 100%, 0);
         }
-        height:$base-spacing-unit * 3;
-        line-height:$base-spacing-unit * 3;
-        span {
-            display:block;
-            height:$base-spacing-unit * 3;
-            line-height:$base-spacing-unit * 3;
-        }
+
+
     }
 
     /*
@@ -102,21 +98,20 @@
 
 
     .ends__left {
-        width:auto;
-        right:50%;
         left:0;
         top:0;
-        padding-left:$base-spacing-unit * 2;
+        padding-left:$base-spacing-unit * 2 + $site-border-width;
         position:absolute;
         transition:all $base-timing $base-easing;
         text-align:left;
         height:$base-spacing-unit * 3;
         line-height:$base-spacing-unit * 3;
-        // z-index:1000;
+
     }
 
         .ends__left--header {
             transform:translate3d(0, -100%, 0);
+            z-index:index($elements, logo);
         }
 
 
@@ -124,56 +119,49 @@
     *   State is bootstrapped and is loading
     */
     .is-loaded.is-ready {
-    //    &.not-on-intro {
-            .ends__left {
-                transform:translate3d(0, -0%, 0);
-            }
+        .ends__left {
+            transform:translate3d(0, -0%, 0);
+        }
 
-            .ends__right {
-                transform:translate3d(0, -0%, 0);
-            }
-    //    }
+        .ends__right {
+            transform:translate3d(0, -0%, 0);
+        }
     }
 
 
     .ends__right {
         position:absolute;
         transition:transform $base-timing $base-easing;
-        width:$base-spacing-unit * 4;
+        padding-right:$base-spacing-unit * 2 + $site-border-width;
         height:$base-spacing-unit * 3;
         line-height:$base-spacing-unit * 3;
         display:block;
         text-align:center;
         right:0;
-        &:hover {
-            color:$color-anchor-hover;
-        }
-        .icon {
-            position:absolute;
-            top:50%;
-            transform:translate(-90%,-40%);
-
-        }
     }
+
 
     .ends__right--header {
         top:0;
         transform:translate3d(0, -100%, 0);
     }
 
+    .header__toggle .icon {
+        position:absolute;
+        top:50%;
+        transform:translate(-90%,-40%);
+
+    }
     .ends__nav {
-        height:100vh;
         position:fixed;
         width:auto;
         transform:translateY(-100%);
         transition-property: transform;
         transition-duration: $base-timing;
         text-align:right;
-        right:$base-spacing-unit;
+        right:0;
         left:0;
-        // @include breakpoint(medium) {
-            height:$base-spacing-unit * 4;
-        // }
+        height:$base-spacing-unit * 3;
 
     }
 
@@ -185,42 +173,104 @@
     .ends__nav__inner  {
         width:100%;
         display:block;
-        transition:opacity $base-timing $base-timing $base-easing;
     }
 
-    //.not-on-intro {
-        .ends__offcanvas:hover  {
-            width:100%;
-            transition-property: width;
-            transition-duration: 0s;
-            transition-delay: 0s;
-            .ends__nav {
-                transform:translateY(0%);
-                transition:transform $base-timing $base-easing;
-            }
-            .ends__nav__inner {
-                opacity:1;
-                transition:opacity $base-timing $base-easing;
-            }
-            .ends__right--header {
-                transform:translate3d(0, 100%, 0);
-            }
 
+        .state-index-is-shown .ends__offcanvas .ends__right--header {
+                transform:translate3d(-$site-drawer-width, 100%, 0);
         }
-//    }
 
-// .nav--global {
-//     padding-top:$base-spacing-unit * 4;
-//     li {
-//         line-height:2;
-//         display:block;
-//
-//     }
-//     @include breakpoint(medium) {
-//         padding-top:0;
-//         line-height:$base-spacing-unit * 3;
-//         li {
-//             display:inline-block;
-//         }
-//     }
-// }
+        @include breakpoint('medium') {
+            .ends__offcanvas:hover .ends__right--header {
+                transform:translate3d(-0, 100%, 0);
+            }
+
+            .ends__offcanvas:hover,
+            .state-index-is-shown .ends__offcanvas  {
+                width:100%;
+                transition-property: width;
+                transition-duration: 0s;
+                transition-delay: 0s;
+                .ends__nav {
+                    transform:translateY(0%);
+                    transition:transform $base-timing $base-easing;
+                }
+
+            }
+        }
+
+
+/*
+*   Actual Navigation uls and lis
+*/
+
+.nav--global {
+    display:block;
+    width:100%;
+    margin:0;
+    padding:0 $base-spacing-unit;
+    text-align:right;
+
+    li {
+        display:inline-block;
+        position:relative;
+        margin:0 $base-spacing-unit 0 0;
+        height:$base-spacing-unit * 3;
+        line-height:$base-spacing-unit * 3;
+    }
+    a {
+        display:block;
+        height:$base-spacing-unit * 3;
+        line-height:$base-spacing-unit * 3;
+    }
+    span {
+        position:relative;
+        top:-2px;
+    }
+}
+
+/*
+*   Close Navigation
+*/
+
+.header__toggle--close {
+    position:absolute;
+    top:0;
+    right:0;
+    z-index:index($elements, indexClose);
+    padding:0 $base-spacing-unit * 2;
+    height:$base-spacing-unit * 3;
+    line-height:$base-spacing-unit * 3;
+    display:none;
+
+    .state-index-is-shown & {
+        display:block;
+
+    }
+    svg {
+        height:25px !important;
+        width:25px !important;
+    }
+    &:hover {
+        svg {
+            fill:$white;
+        }
+    }
+}
+
+/*
+*   When the navigation is opened
+*/
+
+
+.state-index-is-shown {
+    // .link--primary {
+    //     //color:$white;
+    //     &:after {
+    //         background:$white;
+    //     }
+    // }
+    // .link--secondary {
+    //     color:$white;
+    // }
+}

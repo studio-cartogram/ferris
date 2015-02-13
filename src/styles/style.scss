@@ -52,7 +52,7 @@ $foundation-version: '1.0.2';
 //   "components/tabs",
 //   "components/accordion",
 //   "components/typography",
-//   "components/utilities";
+@import "components/utilities";
 
 
 // @import Configuration
@@ -74,7 +74,6 @@ $foundation-version: '1.0.2';
 */
 @import "parts";
 @import "posts";
-@import "page";
 @import "sections";
 @import "transitions";
 

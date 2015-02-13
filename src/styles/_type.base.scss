@@ -118,12 +118,13 @@
     // These will throw a deprecation warning if used within a media query.
     @mixin lead {
         font-size: $p-lead-font-size;
+        line-height: 1.5;
     }
 
         /* Default paragraph styles */
         p {
             font-family: $font-family-base;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: $base-spacing-unit;
             text-rendering: $paragraph-text-rendering;
             font-size: $p;
@@ -196,14 +197,32 @@
 
         .meta {
             letter-spacing:rem-calc(1);
-            font-size:.7rem;
+            font-size:$micro;
             font-family:$font-family-meta;
         }
 
-        .meta__label {
-            letter-spacing:rem-calc(1);
-            font-size:.6rem;;
-            text-transform:uppercase;
+        /*blockquotes*/
+
+
+        blockquote {
+            position:relative;
+            quotes: "\201C""\201D""\2018""\2019";
+            margin:$base-spacing-unit*2;
+            padding:0 $base-spacing-unit*2;
+            &, p {
+                @include lead;
+            }
+            p {
+                display: inline;
+            }
+            &:before {
+                content: open-quote;
+                position:absolute;
+                right:100%;
+                top:$base-spacing-unit*2;
+                font-size:$giga;
+                line-height:0;
+            }
         }
 
 

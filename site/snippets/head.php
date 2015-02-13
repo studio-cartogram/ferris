@@ -38,8 +38,6 @@ echo css('assets/styles/style.css');
 
 echo js('assets/scripts/modernizr.custom.js');
 
-snippet('fonts');
-
 echo '</head>';
 
 echo '<body ng-app="kt" class="template--{{pagename}} state--{{state}}" ng-class="{

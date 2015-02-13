@@ -26,9 +26,7 @@ var dist = "assets",
         // bower + '/angular-route/angular-route.js',
         // bower + '/angular-filter/dist/angular-filter.js',
         bower + '/lodash/dist/lodash.js',
-        bower + '/swiper/dist/idangerous.swiper.js',
-        bower + '/swiper-hash-navigation/dist/idangerous.swiper.hashnav.js',
-        bower + '/swiper-scrollbar/dist/idangerous.swiper.scrollbar.js',
+        bower + '/swiper/dist/js/swiper.jquery.js',
         // bower + '/angular-waypoints/dist/angular-waypoints.all.js',
         // bower + '/foundation-apps/js/vendor/**/*.js',
         // bower + '/foundation-apps/js/angular/**/*.js',
@@ -45,6 +43,7 @@ function handleError(err) {
 gulp.task('styles', ['wiredep'],  function () {
 
     return gulp.src('src/styles/*.scss')
+    //.pipe($.if(!argv.dev, $.uglify()))
     .pipe($.sass({style: 'expanded', includePaths: [bower + '/foundation-apps/scss']}))
     .on('error', handleError)
     .pipe($.autoprefixer('last 1 version'))

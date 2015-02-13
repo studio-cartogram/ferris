@@ -12,11 +12,17 @@ snippet('svg-symbols');
 
 snippet('header');
 
-echo '<section class="page">';
+echo '<section class="section--page js-push-section">';
 
-    echo $page->text()->kirbytext();
+    echo '<article class="formatted">';
+
+        echo $page->text()->kirbytext();
+
+    echo '</article>';
 
 echo '</section>';
+
+snippet('footer');
 
 snippet('foot');
 

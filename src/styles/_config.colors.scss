@@ -29,14 +29,10 @@
      * Add Color Maps for themeing
      */
 
-    $color-accent       :      $yellow;
-    $color-text-body    :      $black;
-
-    $color-anchor-hover :      $black; 
-
-
-
-    $site-background: $black;
+    $color-text         :      $black;
+    $color-anchor       :      $black;
+    $color-anchor-hover :      $black;
+    $color-site-background :   $white;
 
     /**
     * We have a mixin to generate our background and border colors.
