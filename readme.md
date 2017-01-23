@@ -1,5 +1,7 @@
 # Kirby
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/studio-cartogram/ferris.svg)](https://greenkeeper.io/)
+
 Kirby is a file-based CMS.
 Easy to setup. Easy to use. Flexible as hell.
 
